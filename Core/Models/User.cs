@@ -37,12 +37,19 @@
 
         private User() { }
 
-        public User(string id, string name, string userName, string email)
+        public User(string id, string name, string userName, string email, string phone, string birthDate, Gender gender, string cPF, MaritalStatus maritalStatus, Scholarship scholarship, string password)
         {
             Id = id;
             Name = name;
             UserName = userName;
             Email = email;
+            Phone = phone;
+            BirthDate = birthDate;
+            Gender = gender;
+            CPF = cPF;
+            MaritalStatus = maritalStatus;
+            Scholarship = scholarship;
+            Password = password;
         }
     }
 }
