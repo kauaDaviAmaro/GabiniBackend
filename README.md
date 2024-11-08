@@ -55,6 +55,10 @@ Inicie a aplicação com o comando:
 dotnet run --project Presentation
 ```
 
+dotnet ef migrations add initalMigration --output-dir Repositories/Data/Migrations/ --startup-project ../Presentation/Presentation.csproj
+
+dotnet ef database update --startup-project ../Presentation/Presentation.csproj
+
 ## Estrutura do Código
 
 ### Application
