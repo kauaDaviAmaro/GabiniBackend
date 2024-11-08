@@ -4,15 +4,29 @@ namespace Core.DTOs
 {
     public class UserDTO
     {
-        public string Name { get; set; }
-        public string UserName { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string BirthDate { get; set; }
-        public Gender Gender { get; set; }
-        public string CPF { get; set; }
-        public MaritalStatus MaritalStatus { get; set; }
-        public Scholarship Scholarship { get; set; }
-        public string Password { get; set; }
+        public string name { get; set; }
+        public string userName { get; set; }
+        public string email { get; set; }
+        public string phone { get; set; }
+        public string birthDate { get; set; }
+        public Gender gender { get; set; }
+        public string cpf { get; set; }
+        public MaritalStatus maritalStatus { get; set; }
+        public Scholarship scholarship { get; set; }
+        public string password { get; set; }
+
+        public UserDTO(string name, string userName, string email, string phone, string birthDate, Gender gender, string cpf, MaritalStatus maritalStatus, Scholarship scholarship, string password)
+        {
+            this.name = name;
+            this.userName = userName;
+            this.email = email;
+            this.phone = phone;
+            this.birthDate = birthDate;
+            this.gender = gender;
+            this.cpf = cpf;
+            this.maritalStatus = maritalStatus;
+            this.scholarship = scholarship;
+            this.password = password;
+        }
     }
 }
