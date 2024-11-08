@@ -2,17 +2,21 @@
 using Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Core.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Presentation.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/users")]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
 
-        public UserController(IUserService UserService)
+        private readonly IAuthService _authService;
+
+        public UserController(IUserService UserService, IAuthService AuthService)
         {
+            _authService = AuthService;
             _userService = UserService;
         }
 
@@ -53,7 +57,7 @@ namespace Presentation.Controllers
             };
 
             string userId = _authService.GetAuthenticatedUserId(User);
-
+            
             string imageUrl = await _userService.SaveProfilePicture(fileData, userId);
 
             return CreatedAtAction(nameof(PostProfilePicture), imageUrl);
