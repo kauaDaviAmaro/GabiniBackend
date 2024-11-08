@@ -24,5 +24,16 @@
             ZipCode = zipCode;
             User = user;
         }
+
+        public Address(string street, string number, string neighborhood, string city, string state, string zipCode, User user)
+        {
+            Street = street;
+            Number = number;
+            Neighborhood = neighborhood;
+            City = city;
+            State = state;
+            ZipCode = zipCode;
+            User = user;
+        }
     }
 }

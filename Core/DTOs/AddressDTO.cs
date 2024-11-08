@@ -10,6 +10,5 @@ namespace Core.DTOs
         public string city { get; set; }
         public string state { get; set; }
         public string zipCode { get; set; }
-        public User user { get; set; }
     }
 }
