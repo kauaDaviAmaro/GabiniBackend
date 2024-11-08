@@ -57,7 +57,6 @@ namespace Presentation.Controllers
             };
 
             string userId = _authService.GetAuthenticatedUserId(User);
-            
             string imageUrl = await _userService.SaveProfilePicture(fileData, userId);
 
             return CreatedAtAction(nameof(PostProfilePicture), imageUrl);
