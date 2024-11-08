@@ -68,7 +68,7 @@ namespace Presentation
 
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IAuthRepository, AuthRepository>();
-            
+
             builder.Services.AddScoped<ITokenService, TokenService>();
 
             builder.Services.AddScoped<IImageService, ImageService>();
