@@ -1,4 +1,6 @@
-﻿namespace Core.Models
+﻿using Core.DTOs;
+
+namespace Core.Models
 {
     public class Address
     {
@@ -34,6 +36,16 @@
             State = state;
             ZipCode = zipCode;
             User = user;
+        }
+
+        public void Update(AddressDTO addressDTO)
+        {
+            Street = addressDTO.street;
+            Number = addressDTO.number;
+            Neighborhood = addressDTO.neighborhood;
+            City = addressDTO.city;
+            State = addressDTO.state;
+            ZipCode = addressDTO.zipCode;
         }
     }
 }
