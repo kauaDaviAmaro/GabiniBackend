@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Presentation.Controllers
 {
     [ApiController]
-    [Route("api/users")]
+    [Route("api/Users")]
     public class ClienteController : ControllerBase
     {
         private readonly IUserService _userService;
