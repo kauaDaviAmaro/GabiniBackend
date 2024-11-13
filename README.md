@@ -17,7 +17,7 @@ Para executar o projeto, você precisará dos seguintes requisitos:
 
 - .NET SDK 8.0
 - MySQL
-- Ferramenta de linha de comando `dotnet format`
+- Ferramenta de linha de comando `dotnet format` e `dotnet ef`
 
 ## Configuração do Ambiente de Desenvolvimento
 
