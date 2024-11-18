@@ -7,14 +7,14 @@ using Microsoft.AspNetCore.Authorization;
 namespace Presentation.Controllers
 {
     [ApiController]
-    [Route("api/users")]
-    public class UserController : ControllerBase
+    [Route("api/Users")]
+    public class ClienteController : ControllerBase
     {
         private readonly IUserService _userService;
 
         private readonly IAuthService _authService;
 
-        public UserController(IUserService UserService, IAuthService AuthService)
+        public ClienteController(IUserService UserService, IAuthService AuthService)
         {
             _authService = AuthService;
             _userService = UserService;
