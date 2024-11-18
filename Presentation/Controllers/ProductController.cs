@@ -42,14 +42,14 @@ namespace Presentation.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(string id, ProductDTO productDTO)
+        public async Task<ActionResult<Product>> PutProduct(string id, ProductDTO productDTO)
         {
             Product updatedProduct = await _productService.UpdateProduct(id, productDTO);
             if (updatedProduct == null)
             {
                 return NotFound();
             }
-            return NoContent();
+            return CreatedAtAction(nameof(GetProduct), new { id = updatedProduct.Id }, updatedProduct);
         }
 
         [HttpDelete("{id}")]

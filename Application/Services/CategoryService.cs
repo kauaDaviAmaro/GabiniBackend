@@ -1,5 +1,6 @@
 using Core.Models;
 using Core.Repositories;
+using Core.DTOs;
 using Core.Services;
 
 namespace Application.Services
@@ -13,7 +14,7 @@ namespace Application.Services
             _repository = repository;
         }
 
-        public async Task<Category> CreateCategory(Category category)
+        public async Task<Category> CreateCategory(CategoryDTO category)
         {
             return await _repository.CreateCategory(category);
         }
@@ -28,7 +29,7 @@ namespace Application.Services
             return await _repository.GetAllCategories();
         }
 
-        public async Task<Category> UpdateCategory(string id, Category category)
+        public async Task<Category> UpdateCategory(string id, CategoryDTO category)
         {
             return await _repository.UpdateCategory(id, category);
         }

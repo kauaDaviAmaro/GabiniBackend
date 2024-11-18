@@ -3,6 +3,7 @@ using Core.Models;
 using Core.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.DTOs;
 
 namespace Presentation.Controllers
 {
@@ -36,14 +37,14 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        public async Task<ActionResult<Category>> PostCategory(CategoryDTO category)
         {
             var createdCategory = await _categoryService.CreateCategory(category);
             return CreatedAtAction(nameof(GetCategory), new { id = createdCategory.Id }, createdCategory);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(string id, Category category)
+        public async Task<IActionResult> PutCategory(string id, CategoryDTO category)
         {
             var updatedCategory = await _categoryService.UpdateCategory(id, category);
             if (updatedCategory == null)

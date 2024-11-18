@@ -3,6 +3,7 @@ using Core.Repositories;
 using Infrastructure.Repositories.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using Core.DTOs;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
@@ -16,11 +17,12 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<Category> CreateCategory(Category category)
+        public async Task<Category> CreateCategory(CategoryDTO category)
         {
-            _context.Categories.Add(category);
+            Category newCategory = new Category(category.Name, category.Description);
+            _context.Categories.Add(newCategory);
             await _context.SaveChangesAsync();
-            return category;
+            return newCategory;
         }
 
         public async Task<Category?> GetCategoryById(string id)
@@ -33,7 +35,7 @@ namespace Infrastructure.Repositories
             return await _context.Categories.ToListAsync();
         }
 
-        public async Task<Category> UpdateCategory(string id, Category category)
+        public async Task<Category> UpdateCategory(string id, CategoryDTO category)
         {
             var existingCategory = await _context.Categories.FindAsync(id);
             if (existingCategory == null)

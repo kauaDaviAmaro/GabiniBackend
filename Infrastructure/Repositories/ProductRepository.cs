@@ -34,15 +34,14 @@ namespace Infrastructure.Repositories
             await _context.SaveChangesAsync();
             return product;
         }
-
         public async Task<IEnumerable<Product>> GetAllProducts(string? search, string? categoryId)
         {
             if (string.IsNullOrEmpty(search) && string.IsNullOrEmpty(categoryId))
             {
-                return await _context.Products.ToListAsync();
+                return await _context.Products.Include(p => p.Category).ToListAsync();
             }
 
-            var query = _context.Products.AsQueryable();
+            var query = _context.Products.Include(p => p.Category).AsQueryable();
 
             if (!string.IsNullOrEmpty(search))
             {
