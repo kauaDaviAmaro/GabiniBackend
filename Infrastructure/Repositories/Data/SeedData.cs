@@ -6,7 +6,7 @@ namespace Infrastructure.Repositories.Data
 {
     public class SeedData
     {
-        public static void Initialize(IServiceProvider serviceProvider)
+        public async static void Initialize(IServiceProvider serviceProvider)
         {
             using (var context = new GabiniDbContext(
                 serviceProvider.GetRequiredService<
@@ -36,6 +36,30 @@ namespace Infrastructure.Repositories.Data
                         new Address("321 Pine St", "4", "Suburbia", "Cityville", "State", "98765", users[3])
                     );
                     context.SaveChanges(); // Save changes after adding addresses
+                }
+
+                // Seed Categories
+                if (!context.Categories.Any())
+                {
+                    context.Categories.AddRange(
+                        new Category("Category 1", "Description 1"),
+                        new Category("Category 2", "Description 2"),
+                        new Category("Category 3", "Description 3"),
+                        new Category("Category 4", "Description 4")
+                    );
+                    context.SaveChanges();
+                }
+
+                // Seed Products
+                if (!context.Products.Any())
+                {
+                    context.Products.AddRange(
+                        new Product("Product 1", "Description 1", 9.99m, 10, "/products/placeholder.svg", context.Categories.OrderBy(c => c.Id).Last()),
+                        new Product("Product 2", "Description 2", 19.99m, 5, "/products/placeholder.svg", context.Categories.OrderBy(c => c.Id).Last()),
+                        new Product("Product 3", "Description 3", 29.99m, 3, "/products/placeholder.svg", context.Categories.OrderBy(c => c.Id).First()),
+                        new Product("Product 4", "Description 4", 39.99m, 2, "/products/placeholder.svg", context.Categories.OrderBy(c => c.Id).Last())
+                    );
+                    context.SaveChanges();
                 }
             }
         }

@@ -8,13 +8,13 @@ namespace Presentation.Controllers
 {
     [ApiController]
     [Route("api/users")]
-    public class ClienteController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
 
         private readonly IAuthService _authService;
 
-        public ClienteController(IUserService UserService, IAuthService AuthService)
+        public UserController(IUserService UserService, IAuthService AuthService)
         {
             _authService = AuthService;
             _userService = UserService;

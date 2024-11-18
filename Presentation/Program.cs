@@ -60,6 +60,12 @@ namespace Presentation
                 .AddJsonOptions(options =>
                     options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles);
 
+            builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IAddressService, AddressService>();
 

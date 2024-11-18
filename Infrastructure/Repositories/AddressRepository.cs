@@ -57,12 +57,12 @@ namespace Infrastructure.Repositories
         {
             var existingAddress = await _context.Addresses
                 .FirstOrDefaultAsync(a => a.Id == address.Id);
-            
+
             if (existingAddress == null)
             {
                 throw new KeyNotFoundException($"Address with id '{address.Id}' not found");
             }
-            
+
             _context.Addresses.Remove(existingAddress);
 
             await _context.SaveChangesAsync();
