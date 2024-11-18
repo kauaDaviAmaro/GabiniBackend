@@ -20,7 +20,7 @@ namespace Presentation
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(c =>
                         {
-                            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Orders Manager API", Version = "v1" });
+                            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gabini API", Version = "v1" });
                             c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                             {
                                 Name = "Authorization",
@@ -125,6 +125,16 @@ namespace Presentation
             AddControllersAndDependencies(builder);
             Authentication(builder);
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: "AllowOrigin", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
+
             WebApplication app = builder.Build();
 
             if (app.Environment.IsDevelopment())
@@ -133,6 +143,8 @@ namespace Presentation
             }
 
             SeedOnInitialize(app);
+
+            app.UseCors("AllowOrigin");
 
             app.MapControllers();
 

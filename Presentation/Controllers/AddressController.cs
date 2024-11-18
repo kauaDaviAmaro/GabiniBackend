@@ -29,6 +29,34 @@ namespace Presentation.Controllers
 
             return CreatedAtAction(nameof(PostAddress), new { id = address.Id }, address);
         }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Address>>> GetAddresses()
+        {
+            string userId = _authService.GetAuthenticatedUserId(User);
+            IEnumerable<Address> address = await _addressService.GetAddresses(userId);
+
+            return CreatedAtAction(nameof(GetAddresses), address);
+        }
+
+        [Authorize]
+        [HttpDelete]
+        public async Task<ActionResult<Address>> DeleteAddress(string id)
+        {
+            Address address = await _addressService.DeleteAddress(id);
+
+            return CreatedAtAction(nameof(DeleteAddress), address);
+        }
+
+        [Authorize]
+        [HttpPut]
+        public async Task<ActionResult<Address>> PutAddress(AddressDTO addressDTO, string id)
+        {
+            Address address = await _addressService.UpdateAddress(addressDTO, id);
+
+            return CreatedAtAction(nameof(PutAddress), address);
+        }
     }
 
 }

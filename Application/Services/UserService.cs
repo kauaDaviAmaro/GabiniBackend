@@ -53,5 +53,20 @@ namespace Application.Services
             return uploadedFileUrl;
         }
 
+        public async Task<User> UpdatePassword(string userId, ChangePasswordDTO changePasswordDTO)
+        {
+            User? user = await GetUserById(userId);
+
+            if (user == null || changePasswordDTO.password == "")
+            {
+                throw new Exception("Error");
+            }
+
+            user.Password = changePasswordDTO.password;
+
+            await _userRepository.UpdateUser(user);
+
+            return user;
+        }
     }
 }
