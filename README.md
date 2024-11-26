@@ -48,7 +48,7 @@ dotnet tool restore
 
 ### 4. Configurar o Banco de Dados
 
-Atualize as configurações de conexão com o banco de dados no arquivo `appsettings.json` localizado na pasta **Presentation**. Em seguida, aplique as migrações para configurar o banco de dados:
+Atualize as configurações de conexão com o banco de dados/jwt_secret no arquivo `appsettings.json` localizado na pasta **Presentation**. Em seguida, aplique as migrações para configurar o banco de dados:
 
 ```bash
 cd Infrastructure
